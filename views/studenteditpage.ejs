@@ -1,0 +1,77 @@
+<%- include('./base/header.ejs') %>
+<%- include('./base/nav.ejs') %>
+
+<div class="container">
+    <div class="alert text-center bg-primary my-3" style="color: white;">
+        <h4>Edit Student</h4>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <form action="/edit/student/<%= student._id %>" method="post">
+                <div>
+                    <label class="form-label">Roll No</label>
+                    <input type="text" class="form-control" name="rollNo" value="<%= student.rollNo %>">
+                </div>
+
+                <div>
+                    <label class="form-label">Student Name</label>
+                    <input type="text" class="form-control" name="studentName" value="<%= student.studentName %>">
+                </div>
+
+                <div>
+                    <label class="form-label">Father's Name</label>
+                    <input type="text" class="form-control" name="fatherName" value="<%= student.fatherName %>">
+                </div>
+
+                <div>
+                    <label class="form-label">Course</label>
+                    <select class="form-select" name="course">
+                        <option value="">Select Course</option>
+                        <option value="BCA" <%= student.course === "BCA" ? "selected" : "" %>>BCA</option>
+                        <option value="BSc" <%= student.course === "BSc" ? "selected" : "" %>>BSc</option>
+                        <option value="BTech" <%= student.course === "BTech" ? "selected" : "" %>>BTech</option>
+                        <option value="MCA" <%= student.course === "MCA" ? "selected" : "" %>>MCA</option>
+                        <option value="MSc" <%= student.course === "MSc" ? "selected" : "" %>>MSc</option>
+                        <option value="MTech" <%= student.course === "MTech" ? "selected" : "" %>>MTech</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="form-label">Branch</label>
+                    <select class="form-select" name="branch">
+                        <option value="">Select Branch</option>
+                        <option value="Computer Science" <%= student.branch === "Computer Science" ? "selected" : "" %>>Computer Science</option>
+                        <option value="Information Technology" <%= student.branch === "Information Technology" ? "selected" : "" %>>Information Technology</option>
+                        <option value="Electronics" <%= student.branch === "Electronics" ? "selected" : "" %>>Electronics</option>
+                        <option value="Mechanical" <%= student.branch === "Mechanical" ? "selected" : "" %>>Mechanical</option>
+                        <option value="Civil" <%= student.branch === "Civil" ? "selected" : "" %>>Civil</option>
+                        <option value="Electrical" <%= student.branch === "Electrical" ? "selected" : "" %>>Electrical</option>
+                        <option value="Other" <%= student.branch === "Other" ? "selected" : "" %>>Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="form-label">Admission Year</label>
+                    <select class="form-select" name="yearOfAdmission">
+                        <option value="" <%= !student.yearOfAdmission ? "selected" : "" %>>Select Year</option>
+                        <% for (let y = 2021; y <= 2030; y++) { %>
+                            <option value="<%= y %>" <%= student.yearOfAdmission == y ? "selected" : "" %>><%= y %></option>
+                        <% } %>
+                    </select>
+                </div>
+
+                <input type="submit" value="Edit Student" class="btn btn-primary w-100 my-3"
+                       style="background-color: darkgoldenrod;">
+            </form>
+        </div>
+
+        <div class="col"></div>
+    </div>
+</div>
+
+<%- include('./base/footer.ejs') %>
+
