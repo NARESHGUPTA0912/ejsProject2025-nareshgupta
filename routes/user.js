@@ -1,9 +1,6 @@
 const express = require('express');
 const UserController = require('../controllers/UserController');
-// const StudentController = require('../controllers/StudentController');
 const router = express.Router();
-
-// http://localhost:3000
 
 router.get('/', (req, res) => {
     res.render('home');
@@ -24,12 +21,5 @@ router.post('/login', (req, res) => {
 router.get('/student/add/page', (req, res) => {
     res.render('addStudent');
 });
-// router.get('/students/list/page', (req, res) => {
-//     res.render('studentlist');
-// });
-
-// router.get('/student/list/page', (req, res) => {
-//     res.render('studentlist');
-// });
 
 module.exports = router;

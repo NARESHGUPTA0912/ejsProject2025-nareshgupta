@@ -4,14 +4,11 @@ const bcrypt = require('bcrypt');
 async function addUser(req, res) {
     
     try {
-        console.log(req.body, ": req.body");
         let user = new User(req.body);
         let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
-        // console.log(encryptedPassword);
         user.password = encryptedPassword;
         await user.save();
         // res.end("User Add in Database Successfully...");
-        // console.log("User Added Successfully");
         res.redirect('/');
     } catch (error) {
         console.log(error);
@@ -20,9 +17,7 @@ async function addUser(req, res) {
 
 async function doLogin(req, res){
     try {
-        // console.log(req.body, 'req.body');
         let user = await User.findOne({email: req.body.email});
-        // console.log("User Found",user);
         if(user){
             let validPassword = await bcrypt.compare(req.body.password, user.password);
             if(validPassword){

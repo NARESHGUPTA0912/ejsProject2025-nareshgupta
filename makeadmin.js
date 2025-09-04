@@ -15,7 +15,6 @@ async function makeAdmin(){
         user.password = encryptedPassword;
         user.userType = 'Admin';
         await user.save();
-        // console.log("Admin User created....");
         }
     } catch (error) {
         console.log(error);

@@ -22,7 +22,6 @@ router.get("/delete/student/:_id", (req, res) => {
 
 router.get("/edit/student/page/:_id", (req, res) => {
     StudentController.openEditPage(req, res);
-    // res.render('studenteditpage', {student: student});
 })
 
 router.post("/edit/student/:_id", (req, res) => {
